@@ -22,6 +22,7 @@ package object model:
   val machineGunBulletSprite = "sprites/h.png"
   val VERTICAL_COLLISION_SIZE = 100
   val HORIZONTAL_COLLISION_SIZE = 100
+  val CLUTCH_FACTOR = 2
   var inputsQueue: Stack[Entity => Unit] = Empty
 
   //Variabili di AI.

@@ -40,7 +40,13 @@ private class GameViewImpl(
       case KeyCode.RIGHT => handleInput(Command.right)
       case KeyCode.UP    => handleInput(Command.jump)
       case KeyCode.SPACE => handleInput(Command.shoot)
-      case _             => ()
+      case KeyCode.DOWN  => handleInput(Command.clutch)
+      case _             =>
+  }
+  scene.setOnKeyReleased { k =>
+    k.getCode match
+      case KeyCode.DOWN => handleInput(Command.standUp)
+      case _            =>
   }
   primaryStage.setScene(scene)
   observables.foreach(_.addObserver(this))

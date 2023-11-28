@@ -1,5 +1,6 @@
 package model.input.commands
 
+import model.{CLUTCH_FACTOR, HORIZONTAL_COLLISION_SIZE, VERTICAL_COLLISION_SIZE}
 import model.ecs.components.*
 import model.ecs.entities.player.PlayerEntity
 import model.ecs.entities.weapons.BulletEntity
@@ -55,3 +56,13 @@ object Command:
             .addComponent(SpriteComponent(model.machineGunBulletSprite))
             .addComponent(DirectionComponent(bulletDirection.d))
     }
+  def clutch(entity: Entity): Unit =
+    entity.getComponent[SizeComponent] match
+      case Some(size) =>
+        entity.replaceComponent(SizeComponent(size.width, size.height / CLUTCH_FACTOR))
+      case None =>
+  def standUp(entity: Entity): Unit =
+      entity.getComponent[SizeComponent] match
+        case Some(_) =>
+          entity.replaceComponent(SizeComponent(HORIZONTAL_COLLISION_SIZE, VERTICAL_COLLISION_SIZE))
+        case None =>
