@@ -121,7 +121,7 @@ private class MainMenuImpl(parentStage: Stage) extends MainMenu:
     gameEngine.stop()
     System.exit(0)
 
-  def handleWindowCloseRequest(): Unit = {
+  private def handleWindowCloseRequest(): Unit = {
     parentStage.close()
     gameEngine.stop()
     System.exit(0)
